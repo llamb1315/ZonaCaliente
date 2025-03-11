@@ -17,6 +17,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZonaCaliente2">
+
         <activity
             android:name=".MainActivity"
             android:banner="@drawable/app_icon_your_company"
@@ -31,6 +32,8 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name="com.example.zonacaliente2.TablaLimpiezaReceiver"
+            android:exported="true"/>
         <activity
             android:name=".DetailsActivity"
             android:exported="false" />
