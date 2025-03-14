@@ -5,15 +5,19 @@ plugins {
 }
 
 android {
-    namespace = "com.example.zonacaliente2"
+    namespace = "com.example.zonaCaliente"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.zonacaliente2"
+        applicationId = "com.example.zonaCaliente"
         minSdk = 21
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+        ndk {
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
+        }
 
     }
 

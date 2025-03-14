@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ZonaCaliente2"
+rootProject.name = "ZonaCaliente"
 include(":app")
  

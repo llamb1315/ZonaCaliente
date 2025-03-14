@@ -3,44 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1">
+
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/header"
+        android:layout_margin="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/vidosa_logo" />
-
-        <TextView
-            android:id="@+id/company_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Vidrios de Venezuela"
-            android:textColor="#000000"
-            android:textSize="24sp" />
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/vidosa_logo" />
+
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Vidrios de Venezuela"
+                android:textSize="30sp" />
+
+        </LinearLayout>
 
         <TableLayout
             android:id="@+id/tabla_datos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
-            android:padding="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
             android:stretchColumns="*">
 
             <TableRow>
@@ -49,8 +50,10 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
+                    android:textAlignment="center"
                     android:text="Sección"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"/>
 
@@ -60,9 +63,10 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
+                    android:textAlignment="center"
                     android:text="Molde"
+                    android:textSize="24sp"
                     android:layout_height="match_parent"
-                    android:textSize="20sp"
                     android:layout_width="0dp"
                     android:layout_weight="1"/>
 
@@ -71,14 +75,21 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
+                    android:textAlignment="center"
                     android:text="Defecto"
-                    android:textSize="20sp"
-                    android:layout_width="5dp"
+                    android:textSize="24sp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"/>
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
 
-            <TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Primera columna -->
                 <TextView
                     android:background="@drawable/header_cell_shape"
                     android:focusable="true"
@@ -88,35 +99,38 @@
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
+                <!-- Segunda columna -->
                 <TextView
                     android:id="@+id/M1"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
-
                     android:textSize="24sp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
+                <!-- Tercera columna -->
                 <TextView
                     android:id="@+id/D1"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
-                    android:textAlignment="center"
-
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
+
+
+
 
             <TableRow>
                 <TextView
@@ -133,11 +147,10 @@
 
                 <TextView
                     android:id="@+id/M2"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
 
                     android:textSize="24sp"
@@ -146,17 +159,16 @@
 
                 <TextView
                     android:id="@+id/D2"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
-                    android:textAlignment="center"
+                    android:textSize="24sp"
 
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
 
             <TableRow>
@@ -174,11 +186,10 @@
 
                 <TextView
                     android:id="@+id/M3"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
 
                     android:textSize="24sp"
@@ -187,17 +198,16 @@
 
                 <TextView
                     android:id="@+id/D3"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
-                    android:textAlignment="center"
+                    android:textSize="24sp"
 
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
 
             <TableRow>
@@ -215,11 +225,10 @@
 
                 <TextView
                     android:id="@+id/M4"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
 
                     android:textSize="24sp"
@@ -228,17 +237,16 @@
 
                 <TextView
                     android:id="@+id/D4"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
-                    android:textAlignment="center"
+                    android:textSize="24sp"
 
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
 
             <TableRow>
@@ -256,11 +264,10 @@
 
                 <TextView
                     android:id="@+id/M5"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
 
                     android:textSize="24sp"
@@ -269,17 +276,16 @@
 
                 <TextView
                     android:id="@+id/D5"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:layout_weight="6"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:padding="10dp"
-                    android:text=""
-                    android:textAlignment="center"
 
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="24sp" />
             </TableRow>
 
             <TableRow>
@@ -297,11 +303,10 @@
 
                 <TextView
                     android:id="@+id/M6"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
                     android:textAlignment="center"
 
                     android:textSize="24sp"
@@ -310,23 +315,25 @@
 
                 <TextView
                     android:id="@+id/D6"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cell_border"
+                    android:background="@drawable/cell_shape"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:padding="10dp"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:layout_width="5dp"
-                    android:layout_weight="3"/>
+                    android:textSize="24sp"
+
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"/>
             </TableRow>
         </TableLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-2dp"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
 
             android:layout_below="@+id/tabla_datos"
@@ -336,23 +343,21 @@
                 android:id="@+id/ef"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Eficiencia: "
-                android:textSize="24sp" />
+                android:text="Eficiencia:"
+                android:textSize="30sp" />
 
             <TextView
+                android:layout_margin="10dp"
                 android:id="@+id/eficiencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="24sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:text="%"
-                android:textSize="24sp" />
+                android:textSize="30sp" />
         </LinearLayout>
 
 

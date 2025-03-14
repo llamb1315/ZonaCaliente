@@ -1,22 +1,15 @@
-package com.example.zonacaliente2
+package com.example.zonaCaliente
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import android.os.Handler
-import android.view.ViewGroup
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import java.util.concurrent.TimeUnit
-import android.app.AlarmManager
 import android.app.AlertDialog
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
 import android.graphics.Color
-import android.os.Message
 import android.util.Log
-import android.widget.Button
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import kotlinx.serialization.json.Json
 import java.util.Calendar
@@ -45,6 +38,8 @@ class MainActivity : FragmentActivity(), WebSocketEventListener  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         tablaDatos = findViewById(R.id.tabla_datos)
         eficiencia = findViewById(R.id.eficiencia)
@@ -120,8 +115,7 @@ class MainActivity : FragmentActivity(), WebSocketEventListener  {
 
             if (minutos == 0) {
                 Log.d("Hora", "Es una hora en punto, limpiando tabla")
-                limpiarTabla()
-                eficiencia.text = ""
+                 eficiencia.text = ""
             }
 
             verificarHora() // Verifica nuevamente en el siguiente minuto
@@ -167,8 +161,8 @@ class MainActivity : FragmentActivity(), WebSocketEventListener  {
         runOnUiThread {
             mostrarMensaje(
                 titulo = "Error",
-                mensaje = "Hubo un error conectandose con el servidor: \n $reason",
-                botonAceptar = null,
+                mensaje = "Hubo un error conectandose con el servidor:\n$reason",
+                botonAceptar = "Reintentar" to { webSocket.connect() },
                 botonCancelar = "Cerrar app" to { finishAffinity() }
             )
         }
@@ -176,17 +170,23 @@ class MainActivity : FragmentActivity(), WebSocketEventListener  {
 
     override fun onMessageReceived(message: String) {
         runOnUiThread {
-            val miObjeto = Json.decodeFromString<Mensaje>(message)
-            if (miObjeto.type == "molde") {
-                modelos[miObjeto.tag.last().toString().toInt() - 1].text = miObjeto.data
+            val mensaje = Json.decodeFromString<Mensaje>(message)
+            if (mensaje.type == "molde") {
+                modelos[mensaje.tag.last().toString().toInt() - 1].text = mensaje.data
             }
-            if (miObjeto.hour.toInt() == Calendar.getInstance()[Calendar.HOUR]) {
-                if (miObjeto.type == "defecto") {
-                    defectos[miObjeto.tag.last().toString().toInt() - 1].text = mapa[miObjeto.data]
+            if (mensaje.hour.toInt() == Calendar.getInstance()[Calendar.HOUR]) {
+                if (mensaje.type == "defecto") {
+                    defectos[mensaje.tag.last().toString().toInt() - 1].text = mapa[mensaje.data]
 
-                }
-                 else if (miObjeto.type == "eficiencia") {
-                    eficiencia.text = miObjeto.data
+                } 
+                else if (mensaje.type == "eficiencia") {
+                    val numero = mensaje.data.toDouble()
+                    when (numero) {
+                        in 0.0..50.0 -> eficiencia.setBackgroundResource(R.drawable.red_cell_shape)
+                        in 50.0..80.0 -> eficiencia.setBackgroundResource(R.drawable.yellow_cell_shape)
+                        in 80.0..100.0 -> eficiencia.setBackgroundResource(R.drawable.green_cell_shape)
+                        else -> eficiencia.background = null
+                    }
                 }
             }
         }
